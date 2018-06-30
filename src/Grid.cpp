@@ -12,7 +12,6 @@ Grid::Grid()
                g_tiles[i][j].setGridPosition(sf::Vector2f(i, j));
           }
      }
-     createContent();
 }
 
 void Grid::setState(GridState arg)
@@ -27,10 +26,18 @@ GridState Grid::getState()
      return g_curr;
 }
 
-void Grid::setRules(std::vector<int> arg1, std::vector<int> arg2)
+void Grid::clearState()
 {
-     s_begin = std::set<int>(arg1.begin(), arg1.end());
-     s_stay = std::set<int>(arg2.begin(), arg2.end());
+     g_curr = GridState(80, GridStateRow(80, false));
+     g_next = GridState(80, GridStateRow(80, false));
+     createContent();
+     return;
+}
+
+void Grid::setRules(Rules rules)
+{
+     s_birth = rules.getBirthSet();
+     s_survival = rules.getSurvivalSet();
      return;
 }
 
@@ -61,9 +68,9 @@ void Grid::tick()
                               neigh++;
                     }
                }
-               if(s_begin.find(neigh) != s_begin.end() and !g_curr[x][y])
+               if(s_birth.find(neigh) != s_birth.end() and !g_curr[x][y])
                     g_next[x][y] = true;
-               if(s_stay.find(neigh) != s_stay.end() and g_curr[x][y])
+               if(s_survival.find(neigh) != s_survival.end() and g_curr[x][y])
                     g_next[x][y] = true;
           }
      }

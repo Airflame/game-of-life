@@ -1,7 +1,6 @@
 #ifndef TILE_H
 #define TILE_H
 #include <SFML/Graphics.hpp>
-#include <iostream>
 
 
 class Tile : public sf::RectangleShape

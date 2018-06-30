@@ -7,6 +7,8 @@ Tile::Tile()
      c_off = sf::Color(0, 0, 50);
      c_on = sf::Color(200, 200, 0);
      setState(false);
+     setOutlineThickness(1);
+     setOutlineColor(sf::Color::Black);
 }
 
 void Tile::setGridPosition(sf::Vector2f pos)

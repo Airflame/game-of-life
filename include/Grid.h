@@ -15,6 +15,7 @@ class Grid
 public:
      Grid();
      void setState(GridState arg);
+     GridState getState();
      void setRules(std::vector<int> arg1, std::vector<int> arg2);
      void tick();
      void draw(sf::RenderWindow& window);

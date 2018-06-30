@@ -18,7 +18,13 @@ Grid::Grid()
 void Grid::setState(GridState arg)
 {
      g_curr = arg;
+     createContent();
      return;
+}
+
+GridState Grid::getState()
+{
+     return g_curr;
 }
 
 void Grid::setRules(std::vector<int> arg1, std::vector<int> arg2)

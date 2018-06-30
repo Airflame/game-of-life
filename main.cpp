@@ -89,7 +89,6 @@ int main()
                          acc_max -= 0.01;
                     if(event.key.code == sf::Keyboard::Down and acc_max < 1)
                          acc_max += 0.01;
-
                }
           }
           window.display();

@@ -25,7 +25,6 @@ private:
 
      std::set<int> s_begin;
      std::set<int> s_stay;
-     Tile temp;
      GridState g_curr;
      GridState g_next;
      GridContent g_tiles;

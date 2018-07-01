@@ -20,11 +20,5 @@ void Tile::setGridPosition(sf::Vector2f pos)
 void Tile::setState(bool arg)
 {
      setFillColor(arg ? c_on : c_off);
-     on = arg;
      return;
-}
-
-bool Tile::isOn()
-{
-     return on;
 }

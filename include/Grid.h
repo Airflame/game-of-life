@@ -1,6 +1,8 @@
 #ifndef GRID_H
 #define GRID_H
-#include "../include/Rules.h"
+#include <set>
+#include <string>
+#include <fstream>
 #include "../include/Tile.h"
 
 
@@ -16,12 +18,12 @@ public:
      void setState(GridState arg);
      GridState getState();
      void clearState();
-     void setRules(Rules rules);
+     void loadRules(std::string path);
      void tick();
      void draw(sf::RenderWindow& window);
 
 private:
-     void createContent();
+     void updateContent();
 
      std::set<int> s_birth;
      std::set<int> s_survival;

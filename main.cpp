@@ -5,8 +5,6 @@ int main()
      sf::Clock clock;
      float dt = 0;
 
-     Rules rules("config/rules.conf");
-
      GridState state(80, GridStateRow(80, false));
      state[10][11] = true;
      state[11][10] = true;
@@ -15,7 +13,7 @@ int main()
      state[12][12] = true;
 
      Grid grid;
-     grid.setRules(rules);
+     grid.loadRules("config/rules.conf");
      grid.setState(state);
 
      float acc = 0;
@@ -36,7 +34,7 @@ int main()
           if(!stopped)
           {
                acc += dt;
-               if( acc > 1.0f / fps )
+               if(acc > 1.0f / fps)
                {
                     grid.tick();
                     state = grid.getState();

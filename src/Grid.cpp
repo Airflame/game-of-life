@@ -17,7 +17,7 @@ Grid::Grid()
 void Grid::setState(GridState arg)
 {
      g_curr = arg;
-     createContent();
+     updateContent();
      return;
 }
 
@@ -30,14 +30,47 @@ void Grid::clearState()
 {
      g_curr = GridState(80, GridStateRow(80, false));
      g_next = GridState(80, GridStateRow(80, false));
-     createContent();
+     updateContent();
      return;
 }
 
-void Grid::setRules(Rules rules)
+void Grid::loadRules(std::string path)
 {
-     s_birth = rules.getBirthSet();
-     s_survival = rules.getSurvivalSet();
+     std::ifstream file;
+     file.open(path);
+     int id = 0;
+     char input;
+     while(!file.eof())
+     {
+          file >> input;
+          if(input == ';')
+          {
+               id = 0;
+               continue;
+          }
+          if(input == 'B')
+          {
+               id = 1;
+               continue;
+          }
+          if(input == 'S')
+          {
+               id = 2;
+               continue;
+          }
+          int n = input - '0';
+          switch(id)
+          {
+               case 1:
+                    s_birth.insert(n);
+                    break;
+
+               case 2:
+                    s_survival.insert(n);
+                    break;
+          }
+     }
+     file.close();
      return;
 }
 
@@ -76,7 +109,7 @@ void Grid::tick()
      }
      g_curr = g_next;
      g_next = GridState(80, GridStateRow(80, false));
-     createContent();
+     updateContent();
      return;
 }
 
@@ -90,7 +123,7 @@ void Grid::draw(sf::RenderWindow& window)
      return;
 }
 
-void Grid::createContent()
+void Grid::updateContent()
 {
      for(int i = 0; i < 80; i++)
      {

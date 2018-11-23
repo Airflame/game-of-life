@@ -14,22 +14,22 @@ typedef std::vector<Tile> GridContentRow;
 class Grid
 {
 public:
-     Grid();
-     void setState(GridState arg);
-     GridState getState();
-     void clearState();
-     void loadRules(std::string path);
-     void tick();
-     void draw(sf::RenderWindow& window);
+    Grid();
+    void setState(GridState arg);
+    GridState getState();
+    void clearState();
+    void loadRules(std::string path);
+    void tick();
+    void draw(sf::RenderWindow& window);
 
 private:
-     void updateContent();
+    void updateContent();
 
-     std::set<int> s_birth;
-     std::set<int> s_survival;
-     GridState g_curr;
-     GridState g_next;
-     GridContent g_tiles;
+    std::set<int> s_birth;
+    std::set<int> s_survival;
+    GridState g_curr;
+    GridState g_next;
+    GridContent g_tiles;
 };
 
 
